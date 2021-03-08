@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const winston = require('winston');
 const app = express();
 require("dotenv").config();
-const booksRoute = require('./routes/books');
+const noteRoute = require('./app/routes/note.routes');
 
 const PORT = process.env.PORT || 3000;
 
@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended:true}));
 
 //create a logger
 const logger = winston.createLogger({
-  level: 'info',
+  level: 'Lets go! Beast mode on.',
   transports: [
     new winston.transports.Console({
       format:winston.format.combine(
@@ -29,7 +29,8 @@ const logger = winston.createLogger({
 });
 
 //routes
-app.use('/api/books',booksRoute);
+// app.use('/notes', noteRoute);
+require('./app/routes/note.routes')(app);
 
 
 mongoose.connect("mongodb+srv://new1:new1@cluster0.emzrs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
