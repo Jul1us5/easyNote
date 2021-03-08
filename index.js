@@ -17,14 +17,14 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
-mongoose.connect(dbConfig.url, {
-    useNewUrlParser: true
-}).then(() => {
-    console.log("Successfully connected to the database");    
-}).catch(err => {
-    console.log('Could not connect to the database. Exiting now...', err);
-    process.exit();
-});
+
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
+  .then(() => {
+    logger.info("connected to mongoDb atlas");
+  })
+  .catch((error) => {
+    logger.error(error.message);
+  });
 
 // define a simple route
 app.get('/', (req, res) => {
