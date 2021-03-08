@@ -1,26 +1,37 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
+const mongoose = require("mongoose");
+const winston = require('winston');
+const app = express();
 require("dotenv").config();
+
 const PORT = process.env.PORT || 3000;
 
-// create express app
-const app = express();
+//middlewares
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
 
-// parse requests of content-type - application/json
-app.use(bodyParser.json())
+//create a logger
+const logger = winston.createLogger({
+  level: 'info',
+  transports: [
+    new winston.transports.Console({
+      format:winston.format.combine(
+        winston.format.colorize({all:true})
+      )
+    }),
+    new winston.transports.File({ filename: 'error.log' ,level:'error'})
+  ],
+  exceptionHandlers: [
+    new winston.transports.File({ filename: 'exceptions.log' })
+  ]
+});
 
-// Configuring the database
 
-const mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
-
-// Connecting to the database
-
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
+//connect to mongodb atlas
+mongoose
+  .connect(process.env.MONGO_URL, { useNewUrlParser: true })
   .then(() => {
     logger.info("connected to mongoDb atlas");
   })
@@ -28,16 +39,9 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
     logger.error(error.message);
   });
 
-// define a simple route
-app.get('/', (req, res) => {
-    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
-});
+  require('./app/routes/note.routes')(app);
 
-// Require Notes routes
-require('./app/routes/note.routes.js')(app);
-
-// listen for requests
 //start the server
 app.listen(PORT, () => {
-    logger.info(`Server started at PORT ${PORT}`);
-  });
+  logger.info(`Server started at PORT ${PORT}`);
+});
