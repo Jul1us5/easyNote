@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 require("dotenv").config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // create express app
 const app = express();
@@ -37,6 +37,6 @@ require('./app/routes/note.routes.js')(app);
 
 // listen for requests
 //start the server
-app.listen(PORT, () => {
+app.listen(process.env.PORT, '0.0.0.0', () => {
     logger.info(`Server started at PORT ${PORT}`);
   });
