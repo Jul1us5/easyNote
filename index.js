@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+require("dotenv").config();
+const PORT = process.env.PORT || 3000;
 
 // create express app
 const app = express();
@@ -11,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // Configuring the database
-const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
@@ -35,6 +36,7 @@ app.get('/', (req, res) => {
 require('./app/routes/note.routes.js')(app);
 
 // listen for requests
-app.listen(3000, () => {
-    console.log("Server is listening on port 3000");
-});
+//start the server
+app.listen(PORT, () => {
+    logger.info(`Server started at PORT ${PORT}`);
+  });
