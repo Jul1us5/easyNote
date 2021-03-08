@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 require("dotenv").config();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 // create express app
 const app = express();
@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // Configuring the database
+
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
@@ -37,6 +38,6 @@ require('./app/routes/note.routes.js')(app);
 
 // listen for requests
 //start the server
-app.listen(process.env.PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
     logger.info(`Server started at PORT ${PORT}`);
   });
