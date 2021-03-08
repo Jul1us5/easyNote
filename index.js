@@ -3,8 +3,7 @@ const mongoose = require("mongoose");
 const winston = require('winston');
 const app = express();
 require("dotenv").config();
-
-require('./app/routes/note.routes')(app);
+const booksRoute = require('./routes/books');
 
 const PORT = process.env.PORT || 3000;
 
@@ -29,8 +28,11 @@ const logger = winston.createLogger({
   ]
 });
 
-mongoose.connect("mongodb+srv://new1:new1@cluster0.emzrs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
+//routes
+app.use('/api/books',booksRoute);
 
+
+mongoose.connect("mongodb+srv://new1:new1@cluster0.emzrs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 //connect to mongodb atlas
 mongoose
   .connect(process.env.MONGO_URL, { useNewUrlParser: true })
@@ -40,7 +42,6 @@ mongoose
   .catch((error) => {
     logger.error(error.message);
   });
-
 
 //start the server
 app.listen(PORT, () => {
