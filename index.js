@@ -4,6 +4,8 @@ const winston = require('winston');
 const app = express();
 require("dotenv").config();
 
+require('./app/routes/note.routes')(app);
+
 const PORT = process.env.PORT || 3000;
 
 //middlewares
@@ -39,7 +41,6 @@ mongoose
     logger.error(error.message);
   });
 
-  require('./app/routes/note.routes')(app);
 
 //start the server
 app.listen(PORT, () => {
