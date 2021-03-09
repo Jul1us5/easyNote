@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended:true}));
 
 //create a logger
 const logger = winston.createLogger({
-  level: 'Lets go! Beast mode on.',
+  level: 'Lets go! Beast mode on.!',
   transports: [
     new winston.transports.Console({
       format:winston.format.combine(
