@@ -32,6 +32,10 @@ const logger = winston.createLogger({
 // app.use('/notes', noteRoute);
 require('./app/routes/note.routes')(app);
 
+app.get('/', (req, res) => {
+  res.json({"message": "Welcome to EasyNotes application! Take notes quickly. Organize and keep track of all your notes."});
+});
+
 
 mongoose.connect("mongodb+srv://jul1u51:jul1u51@cluster0.gtnmz.mongodb.net/easyNotes?retryWrites=true&w=majority", {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 //connect to mongodb atlas
