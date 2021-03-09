@@ -4,6 +4,7 @@ const winston = require('winston');
 const app = express();
 require("dotenv").config();
 const noteRoute = require('./app/routes/note.routes');
+let path = require('path');
 
 const PORT = process.env.PORT || 3000;
 
@@ -32,10 +33,7 @@ const logger = winston.createLogger({
 // app.use('/notes', noteRoute);
 require('./app/routes/note.routes')(app);
 
-// app.get('/', (req, res) => {
-//   res.json({"message": "Welcome to EasyNotes application! Take notes quickly. Organize and keep track of all your notes."});
-// });
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
