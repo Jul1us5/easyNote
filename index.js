@@ -33,7 +33,7 @@ const logger = winston.createLogger({
 require('./app/routes/note.routes')(app);
 
 
-mongoose.connect("mongodb+srv://new1:new1@cluster0.emzrs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect("mongodb+srv://jul1u51:jul1u51@cluster0.gtnmz.mongodb.net/easyNotes?retryWrites=true&w=majority", {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 //connect to mongodb atlas
 mongoose
   .connect(process.env.MONGO_URL, { useNewUrlParser: true })
