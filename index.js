@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 });
 
 
-mongoose.connect("mongodb+srv://jul1u51:jul1u51@cluster0.gtnmz.mongodb.net/easyNotes?retryWrites=true&w=majority", {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(process.env.MONGO_URL, {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 //connect to mongodb atlas
 mongoose
   .connect(process.env.MONGO_URL, { useNewUrlParser: true })
