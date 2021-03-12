@@ -15,7 +15,19 @@
 <body>
     <div class="left">
         <div class="title">Welcome. </div>
-        <div class="send"></div>
+        <div class="send">
+            <form action="http://www.foo.com" method="POST">
+                <div>
+                    <label for="say">What is title here?</label>
+                    <input name="say" id="say" value="Hi">
+                </div>
+                <div>
+                    <label for="to">Name is?</label>
+                    <input name="to" id="to" value="Mom">
+                </div>
+                <button>Push</button>
+            </form>
+        </div>
     </div>
     <div class="right">
         <div class="title">
