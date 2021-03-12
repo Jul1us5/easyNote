@@ -16,14 +16,18 @@
     <div class="left">
         <div class="title">Welcome. </div>
         <div class="send">
-            <form action="http://www.foo.com" method="POST">
+            <form action="http://localhost:3000/notes" method="POST">
                 <div>
                     <label for="say">What is title here?</label>
-                    <input name="say" id="say" value="Hi">
+                    <input name="title" id="title" value="Hi">
                 </div>
                 <div>
                     <label for="to">Name is?</label>
-                    <input name="to" id="to" value="Mom">
+                    <input name="content" id="content" value="Mom">
+                </div>
+                <div>
+                    <label for="to">How about about?</label>
+                    <input name="about" id="about" value="About">
                 </div>
                 <button>Push</button>
             </form>
