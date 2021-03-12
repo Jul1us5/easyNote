@@ -18,3 +18,31 @@ arrow.addEventListener('click', () => {
     }
 
 });
+
+// Data
+
+let HTML = `<div class="table">
+                <div class="name">
+                    <img src="./style/img/user.svg" alt="avatar">
+                    <span>Julius</span>
+                </div>
+                <div class="all">
+                    <div class="row">Resp api</div>
+                    <div class="row">
+                        <li>Let see how its works</li>
+                    </div>
+                    <div class="row">2021.10.12</div>
+
+                </div>
+            </div>`;
+
+const url = "https://jul1u5.herokuapp.com/notes";
+
+axios.get(url).then((resp) => {
+    let name = resp.data;
+    console.log(name);
+});
+
+
+
+// https://jul1u5.herokuapp.com/notes
