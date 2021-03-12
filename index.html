@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" type="text/css" href="style/main.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
     <div class="left">
         <div class="title">Welcome. </div>
         <div class="send">
-            <form action="http://localhost:3000/notes" method="POST">
+            <form action="https://jul1u5.herokuapp.com/notes" method="POST">
                 <div>
                     <label for="say">What is title here?</label>
                     <input name="title" id="title" value="Hi">
@@ -40,7 +40,18 @@
         <div class="about">
             <a href="https://jul1u5.herokuapp.com/notes">https://jul1u5.herokuapp.com/notes</a>
         </div>
+        <div class="feed">
+            <div class="on">
+                <div class="animation__cross">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <!-- <img src="./style/img/down-arrow.svg" alt="arrow"> -->
+            </div>
+        </div>
     </div>
+    <script src="main.js"></script>
 </body>
 
 </html>
