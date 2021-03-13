@@ -5,369 +5,56 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" type="text/css" href="style/main.css"> -->
+    <link rel="stylesheet" type="text/css" href="style/main.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <title>Easy Notes</title>
 </head>
-<style>
-    body {
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-columns: 1fr 3fr;
-        grid-template-columns: 1fr 3fr;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: #020202;
-        overflow: hidden;
-        font-family: 'Black Ops One', cursive;
-    }
-    
-    body .left {
-        display: -ms-grid;
-        display: grid;
-        width: 100%;
-        height: 100vh;
-        background-color: white;
-        position: relative;
-    }
-    
-    body .left .title {
-        position: absolute;
-        top: 100px;
-        display: -ms-grid;
-        display: grid;
-        width: 100%;
-        text-align: right;
-        font-size: 30px;
-    }
-    
-    body .left .send {
-        display: -ms-grid;
-        display: grid;
-        position: absolute;
-        bottom: 200px;
-        width: 300px;
-        right: 0px;
-        margin-top: 1px;
-        height: 400px;
-        border: 1px solid black;
-        background-color: black;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-    
-    body .left .send form {
-        display: -ms-grid;
-        display: grid;
-        width: 100%;
-        padding: 10px 0px;
-        text-align: center;
-        color: white;
-        font-family: 'Montserrat', sans-serif;
-    }
-    
-    body .left .send form div {
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-        -ms-grid-rows: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-    }
-    
-    body .left .send form div input {
-        margin-left: 20%;
-        width: 60%;
-        text-align: center;
-    }
-    
-    body .left .send form button {
-        margin-left: 31%;
-        margin-top: 10px;
-        width: 40%;
-        height: 20px;
-        border: none;
-        border-radius: 4px;
-        background-color: #0077ff;
-        cursor: pointer;
-    }
-    
-    body .right {
-        display: -ms-grid;
-        display: grid;
-        width: 100%;
-        height: 100vh;
-        background-color: black;
-        position: relative;
-    }
-    
-    body .right .title {
-        position: absolute;
-        top: 100px;
-        display: -ms-grid;
-        display: grid;
-        width: 100%;
-        margin-left: 10px;
-        color: white;
-        font-size: 35px;
-    }
-    
-    body .right .about {
-        position: absolute;
-        top: 140px;
-        display: -ms-grid;
-        display: grid;
-        width: 100%;
-        margin-left: 10px;
-        color: white;
-        font-size: 15px;
-        font-family: 'Montserrat', sans-serif;
-    }
-    
-    body .right .about a {
-        color: #3ba4ff;
-        text-decoration: none;
-        font-size: 15px;
-    }
-    
-    body .right .feed {
-        position: absolute;
-        right: 0;
-        display: -ms-grid;
-        display: grid;
-        width: 400px;
-        height: 100vh;
-        background-color: white;
-        -webkit-transition: 1s;
-        transition: 1s;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        font-family: 'Montserrat', sans-serif;
-    }
-    
-    body .right .feed .table {
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-columns: 1fr 2fr;
-        grid-template-columns: 1fr 2fr;
-        -ms-grid-rows: (5)[1fr];
-        grid-template-rows: repeat(1fr, 5);
-        width: 350px;
-        height: 130px;
-        border: 1px dashed rgba(59, 163, 255, 0.413);
-    }
-    
-    body .right .feed .table .name {
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-rows: 2fr .2fr;
-        grid-template-rows: 2fr .2fr;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-    
-    body .right .feed .table .name img {
-        width: 60px;
-    }
-    
-    body .right .feed .table .name span {
-        width: 60px;
-        text-align: center;
-        margin-top: -30px;
-    }
-    
-    body .right .feed .table .all {
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-        -ms-grid-rows: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        -ms-grid-row-align: center;
-        align-self: center;
-    }
-    
-    body .right .feed .table .all .row:nth-child(1) {
-        margin-top: 2px;
-        font-size: 18px;
-        font-weight: bold;
-    }
-    
-    body .right .feed .table .all .row:nth-child(3) {
-        margin-top: 2px;
-        font-size: 10px;
-    }
-    
-    body .right .feed .on {
-        display: -ms-grid;
-        display: grid;
-        position: absolute;
-        top: 120px;
-        left: -35px;
-        display: grid;
-        width: 35px;
-        height: 35px;
-        cursor: pointer;
-        -webkit-transition: .5s;
-        transition: .5s;
-        background-color: white;
-        border-radius: 10px 0px 0px 10px;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-    
-    body .right .feed .on .animation__cross {
-        display: -ms-grid;
-        display: grid;
-        width: 25px;
-        height: 20px;
-        -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-        -ms-grid-rows: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-transition: 1s;
-        transition: 1s;
-    }
-    
-    body .right .feed .on .animation__cross span {
-        width: 100%;
-        height: 3px;
-        background-color: #010101;
-        border-radius: 10px;
-        -webkit-transition: 1s;
-        transition: 1s;
-    }
-    
-    body .right .feed .on .animation__cross span:nth-child(1) {
-        -webkit-transform: rotate(-40deg);
-        transform: rotate(-40deg);
-        margin-top: 9px;
-        -webkit-transition: 1s;
-        transition: 1s;
-    }
-    
-    body .right .feed .on .animation__cross span:nth-child(2) {
-        opacity: 0;
-        -webkit-transition: 0s;
-        transition: 0s;
-    }
-    
-    body .right .feed .on .animation__cross span:nth-child(3) {
-        -webkit-transform: rotate(40deg);
-        transform: rotate(40deg);
-        margin-top: -14px;
-        -webkit-transition: 1s;
-        transition: 1s;
-    }
-    
-    body .right .feed .on .animation__open {
-        display: -ms-grid;
-        display: grid;
-        width: 25px;
-        height: 20px;
-        -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-        -ms-grid-rows: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-transition: 1s;
-        transition: 1s;
-        margin-top: 2px;
-    }
-    
-    body .right .feed .on .animation__open span {
-        width: 100%;
-        height: 3px;
-        background-color: black;
-        border-radius: 10px;
-        -webkit-transition: 1s;
-        transition: 1s;
-    }
-    
-    body .right .feed .on img {
-        -webkit-transform: rotate(-90deg);
-        transform: rotate(-90deg);
-    }
-    
-    body .right .off {
-        right: -400px;
-        -webkit-transition: 1s;
-        transition: 1s;
-    }
-</style>
 
 <body>
-    <div class="left">
-        <div class="title">Welcome. </div>
-        <div class="send">
-            <form action="https://jul1u5.herokuapp.com/notes" method="POST">
-                <div>
-                    <label for="say">What is title here?</label>
-                    <input name="title" id="title" value="Hi">
-                </div>
-                <div>
-                    <label for="to">Name is?</label>
-                    <input name="content" id="content" value="Mom">
-                </div>
-                <div>
-                    <label for="to">How about about?</label>
-                    <input name="about" id="about" value="About">
-                </div>
-                <button>Push</button>
-            </form>
+    <div class="wrapper">
+        <div class="left">
+            <div class="title">Welcome. </div>
+            <!-- <div class="send">
+                <form action="https://jul1u5.herokuapp.com/notes" method="POST">
+                    <div>
+                        <label for="say">What is title here?</label>
+                        <input name="title" id="title" value="Hi">
+                    </div>
+                    <div>
+                        <label for="to">Name is?</label>
+                        <input name="content" id="content" value="Mom">
+                    </div>
+                    <div>
+                        <label for="to">How about about?</label>
+                        <input name="about" id="about" value="About">
+                    </div>
+                    <button>Push</button>
+                </form>
+            </div> -->
         </div>
-    </div>
-    <div class="right">
-        <div class="title">
-            A REST API
-        </div>
-        <div class="about">
-            <a href="https://jul1u5.herokuapp.com/notes">https://jul1u5.herokuapp.com/notes</a>
-        </div>
-        <div class="feed">
-
-            <div class="on">
-                <div class="animation__cross">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+        <div class="right">
+            <div class="title">
+                A REST API
             </div>
+            <!-- <div class="about">
+                <a href="https://jul1u5.herokuapp.com/notes">https://jul1u5.herokuapp.com/notes</a>
+            </div>
+            <div class="feed">
+    
+                <div class="on">
+                    <div class="animation__cross">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="main.js"></script>
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script> -->
 
 </body>
 
