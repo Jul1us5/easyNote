@@ -7,8 +7,24 @@ const noteRoute = require('./app/routes/note.routes');
 let path = require('path');
 cors = require("cors");
 app.use(cors());
+const request = require('request');
 
 
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     next();
+// });
+
+// app.get('/api', (req, res) => {
+//     request({ url: req.query.url },
+//         (error, response, body) => {
+//             if (error || response.statusCode !== 200) {
+//                 return res.status(500).send('error');
+//             }
+//             res.send(body);
+//         }
+//     )
+// });
 
 const PORT = process.env.PORT || 3000;
 // Add Access Control Allow Origin headers

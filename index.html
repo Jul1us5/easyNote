@@ -9,11 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
-    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
     <title>Easy Notes</title>
 </head>
-
 <style>
     body {
         margin: 0;
@@ -27,6 +24,34 @@
         height: 100vh;
         background-color: black;
         font-family: 'Black Ops One', cursive;
+        background: linear-gradient(-45deg, #ffffff, #59d0ff, #e8e8e8, #91dcff);
+        background-size: 400% 400%;
+        -webkit-animation: gradient 15s ease infinite;
+        animation: gradient 15s ease infinite;
+    }
+    
+    @-webkit-keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
     }
     
     .header {
@@ -65,7 +90,7 @@
         -webkit-box-align: start;
         -ms-flex-align: start;
         align-items: flex-start;
-        background-color: white;
+        background-color: transparent;
         position: relative;
     }
     
@@ -430,7 +455,6 @@
             -webkit-box-pack: right;
             -ms-flex-pack: right;
             justify-content: right;
-            background-color: white;
             background-color: black;
             position: relative;
         }
@@ -506,7 +530,7 @@
                                 <label for="to">How about about?</label>
                                 <input name="about" id="about" value="About">
                             </div>
-                            <button>Push</button>
+                            <button onclick="window.open('https://jul1u5.herokuapp.com/', '_blank');">Push</button>
                         </form>
                     </div>
                 </div>

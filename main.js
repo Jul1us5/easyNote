@@ -1,7 +1,4 @@
 // Press button
-
-
-
 const arrow = document.querySelector('.on');
 const feed = document.querySelector('.feed');
 const section = document.querySelector('.main');
@@ -24,92 +21,31 @@ arrow.addEventListener('click', () => {
 
 // Data
 
-let HTML = `<div class="table">
-                <div class="name">
-                    <img src="./style/img/user.svg" alt="avatar">
-                    <span>Julius</span>
-                </div>
-                <div class="all">
-                    <div class="row">Resp api</div>
-                    <div class="row">
-                        <li>Let see how its works</li>
-                    </div>
-                    <div class="row">2021.10.12</div>
+let HTML = '';
 
-                </div>
-            </div>
-            <div class="table">
-                <div class="name">
-                    <img src="./style/img/user.svg" alt="avatar">
-                    <span>Julius</span>
-                </div>
-                <div class="all">
-                    <div class="row">Resp api</div>
-                    <div class="row">
-                        <li>Let see how its works</li>
-                    </div>
-                    <div class="row">2021.10.12</div>
+axios.get('https://jul1u5.herokuapp.com/notes')
+    .then(response => {
 
-                </div>
-            </div>
-            <div class="table">
-                <div class="name">
-                    <img src="./style/img/user.svg" alt="avatar">
-                    <span>Julius</span>
-                </div>
-                <div class="all">
-                    <div class="row">Resp api</div>
-                    <div class="row">
-                        <li>Let see how its works</li>
-                    </div>
-                    <div class="row">2021.10.12</div>
+        let datas = response.data.reverse();
+        for (let i = 0; i < 5; i++) {
 
-                </div>
-            </div>
-            <div class="table">
-                <div class="name">
-                    <img src="./style/img/user.svg" alt="avatar">
-                    <span>Julius</span>
-                </div>
-                <div class="all">
-                    <div class="row">Resp api</div>
-                    <div class="row">
-                        <li>Let see how its works</li>
-                    </div>
-                    <div class="row">2021.10.12</div>
+            HTML += `<div class="table">
+                            <div class="name">
+                                <img src="./style/img/user.svg" alt="avatar">
+                                <span>${datas[i].content}</span>
+                            </div>
+                            <div class="all">
+                                <div class="row">${datas[i].title}</div>
+                                <div class="row">
+                                    <li>${datas[i].about}</li>
+                                </div>
+                                <div class="row">${datas[i].createdAt}</div>
 
-                </div>
-            </div>
-            <div class="table">
-                <div class="name">
-                    <img src="./style/img/user.svg" alt="avatar">
-                    <span>Julius</span>
-                </div>
-                <div class="all">
-                    <div class="row">Resp api</div>
-                    <div class="row">
-                        <li>Let see how its works</li>
-                    </div>
-                    <div class="row">2021.10.12</div>
+                            </div>
+                        </div>`;
 
-                </div>
-            </div>`;
+        }
 
-feed.insertAdjacentHTML('afterbegin', HTML);
-section.insertAdjacentHTML('afterbegin', HTML);
-
-const fetchUsers = () => {
-    axios.get('https://jul1u5.herokuapp.com/notes')
-        .then(response => {
-            const users = response.data.data;
-            console.log(`GET list users`, users);
-        })
-        .catch(error => console.error(error));
-};
-
-fetchUsers();
-
-
-
-
-// https://jul1u5.herokuapp.com/notes
+        feed.insertAdjacentHTML('afterbegin', HTML);
+        section.insertAdjacentHTML('afterbegin', HTML);
+    }).catch(error => console.error(error));
