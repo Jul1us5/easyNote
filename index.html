@@ -9,137 +9,157 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
     <title>Easy Notes</title>
 </head>
+
 <style>
     body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .wrapper {
+        display: -ms-grid;
+        display: grid;
+        width: 100%;
+        height: 100vh;
+        background-color: black;
+        font-family: 'Black Ops One', cursive;
+    }
+    
+    .header {
         display: -ms-grid;
         display: grid;
         -ms-grid-columns: 1fr 3fr;
         grid-template-columns: 1fr 3fr;
-        margin: 0;
-        padding: 0;
         width: 100%;
         height: 100vh;
-        background-color: #020202;
-        overflow: hidden;
-        font-family: 'Black Ops One', cursive;
     }
     
-    body .left {
+    .section {
+        display: none;
+        width: 100%;
+        height: 300px;
+    }
+    
+    .main {
         display: -ms-grid;
         display: grid;
         width: 100%;
-        height: 100vh;
+        background-color: white;
+    }
+    
+    .container {
+        display: -ms-grid;
+        display: grid;
+    }
+    
+    .container .left {
+        display: -ms-grid;
+        display: grid;
+        -webkit-box-pack: right;
+        -ms-flex-pack: right;
+        justify-content: right;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
         background-color: white;
         position: relative;
     }
     
-    body .left .title {
-        position: absolute;
-        top: 100px;
-        display: -ms-grid;
-        display: grid;
-        width: 100%;
-        text-align: right;
+    .container .left .title {
+        color: black;
         font-size: 30px;
+        margin-top: 150px;
     }
     
-    body .left .send {
+    .container {
         display: -ms-grid;
         display: grid;
-        position: absolute;
-        bottom: 200px;
-        width: 300px;
-        right: 0px;
-        margin-top: 1px;
-        height: 400px;
-        border: 1px solid black;
+    }
+    
+    .container .right {
+        -webkit-box-pack: right;
+        -ms-flex-pack: right;
+        justify-content: right;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
         background-color: black;
+        position: relative;
+    }
+    
+    .container .right .title {
+        max-width: 240px;
+        color: white;
+        font-size: 30px;
+        height: 30px;
+        margin-top: 150px;
+        margin-left: 10px;
+    }
+    
+    .table {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: 1fr 2fr;
+        grid-template-columns: 1fr 2fr;
+        -ms-grid-rows: (5)[1fr];
+        grid-template-rows: repeat(1fr, 5);
+        width: 350px;
+        height: 130px;
+        border: 1px dashed rgba(59, 163, 255, 0.413);
+    }
+    
+    .table .name {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-rows: 2fr .2fr;
+        grid-template-rows: 2fr .2fr;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
     }
     
-    body .left .send form {
-        display: -ms-grid;
-        display: grid;
-        width: 100%;
-        padding: 10px 0px;
-        text-align: center;
-        color: white;
-        font-family: 'Montserrat', sans-serif;
+    .table .name img {
+        width: 60px;
     }
     
-    body .left .send form div {
+    .table .name span {
+        width: 60px;
+        text-align: center;
+        margin-top: -30px;
+    }
+    
+    .table .all {
         display: -ms-grid;
         display: grid;
         -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-        -ms-grid-rows: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
+        -ms-grid-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        -ms-grid-row-align: center;
+        align-self: center;
     }
     
-    body .left .send form div input {
-        margin-left: 20%;
-        width: 60%;
-        text-align: center;
+    .table .all .row:nth-child(1) {
+        margin-top: 2px;
+        font-size: 18px;
+        font-weight: bold;
     }
     
-    body .left .send form button {
-        margin-left: 31%;
-        margin-top: 10px;
-        width: 40%;
-        height: 20px;
-        border: none;
-        border-radius: 4px;
-        background-color: #0077ff;
-        cursor: pointer;
+    .table .all .row:nth-child(3) {
+        margin-top: 2px;
+        font-size: 10px;
     }
     
-    body .right {
-        display: -ms-grid;
-        display: grid;
-        width: 100%;
-        height: 100vh;
-        background-color: black;
-        position: relative;
-    }
-    
-    body .right .title {
+    .feed {
         position: absolute;
-        top: 100px;
-        display: -ms-grid;
-        display: grid;
-        width: 100%;
-        margin-left: 10px;
-        color: white;
-        font-size: 35px;
-    }
-    
-    body .right .about {
-        position: absolute;
-        top: 140px;
-        display: -ms-grid;
-        display: grid;
-        width: 100%;
-        margin-left: 10px;
-        color: white;
-        font-size: 15px;
-        font-family: 'Montserrat', sans-serif;
-    }
-    
-    body .right .about a {
-        color: #3ba4ff;
-        text-decoration: none;
-        font-size: 15px;
-    }
-    
-    body .right .feed {
-        position: absolute;
+        top: 0;
         right: 0;
         display: -ms-grid;
         display: grid;
@@ -157,64 +177,7 @@
         font-family: 'Montserrat', sans-serif;
     }
     
-    body .right .feed .table {
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-columns: 1fr 2fr;
-        grid-template-columns: 1fr 2fr;
-        -ms-grid-rows: (5)[1fr];
-        grid-template-rows: repeat(1fr, 5);
-        width: 350px;
-        height: 130px;
-        border: 1px dashed rgba(59, 163, 255, 0.413);
-    }
-    
-    body .right .feed .table .name {
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-rows: 2fr .2fr;
-        grid-template-rows: 2fr .2fr;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-    
-    body .right .feed .table .name img {
-        width: 60px;
-    }
-    
-    body .right .feed .table .name span {
-        width: 60px;
-        text-align: center;
-        margin-top: -30px;
-    }
-    
-    body .right .feed .table .all {
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-        -ms-grid-rows: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        -ms-grid-row-align: center;
-        align-self: center;
-    }
-    
-    body .right .feed .table .all .row:nth-child(1) {
-        margin-top: 2px;
-        font-size: 18px;
-        font-weight: bold;
-    }
-    
-    body .right .feed .table .all .row:nth-child(3) {
-        margin-top: 2px;
-        font-size: 10px;
-    }
-    
-    body .right .feed .on {
+    .feed .on {
         display: -ms-grid;
         display: grid;
         position: absolute;
@@ -236,7 +199,7 @@
         align-items: center;
     }
     
-    body .right .feed .on .animation__cross {
+    .feed .on .animation__cross {
         display: -ms-grid;
         display: grid;
         width: 25px;
@@ -255,7 +218,7 @@
         transition: 1s;
     }
     
-    body .right .feed .on .animation__cross span {
+    .feed .on .animation__cross span {
         width: 100%;
         height: 3px;
         background-color: #010101;
@@ -264,7 +227,7 @@
         transition: 1s;
     }
     
-    body .right .feed .on .animation__cross span:nth-child(1) {
+    .feed .on .animation__cross span:nth-child(1) {
         -webkit-transform: rotate(-40deg);
         transform: rotate(-40deg);
         margin-top: 9px;
@@ -272,13 +235,13 @@
         transition: 1s;
     }
     
-    body .right .feed .on .animation__cross span:nth-child(2) {
+    .feed .on .animation__cross span:nth-child(2) {
         opacity: 0;
         -webkit-transition: 0s;
         transition: 0s;
     }
     
-    body .right .feed .on .animation__cross span:nth-child(3) {
+    .feed .on .animation__cross span:nth-child(3) {
         -webkit-transform: rotate(40deg);
         transform: rotate(40deg);
         margin-top: -14px;
@@ -286,7 +249,7 @@
         transition: 1s;
     }
     
-    body .right .feed .on .animation__open {
+    .feed .on .animation__open {
         display: -ms-grid;
         display: grid;
         width: 25px;
@@ -306,7 +269,7 @@
         margin-top: 2px;
     }
     
-    body .right .feed .on .animation__open span {
+    .feed .on .animation__open span {
         width: 100%;
         height: 3px;
         background-color: black;
@@ -315,56 +278,267 @@
         transition: 1s;
     }
     
-    body .right .feed .on img {
+    .feed .on img {
         -webkit-transform: rotate(-90deg);
         transform: rotate(-90deg);
     }
     
-    body .right .off {
+    .off {
         right: -400px;
         -webkit-transition: 1s;
         transition: 1s;
     }
+    
+    .send {
+        display: -ms-grid;
+        display: grid;
+        width: 300px;
+        position: absolute;
+        top: 200px;
+        right: -10px;
+        height: 200px;
+        background-color: black;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    }
+    
+    .send form {
+        display: -ms-grid;
+        display: grid;
+        width: 100%;
+        padding: 10px 0px;
+        text-align: center;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    .send form div {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+        -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    
+    .send form div input {
+        margin-left: 20%;
+        width: 60%;
+        text-align: center;
+    }
+    
+    .send form button {
+        margin-left: 31%;
+        margin-top: 10px;
+        width: 40%;
+        height: 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #0077ff;
+        cursor: pointer;
+    }
+    
+    .about {
+        display: inline-block;
+        margin-left: 10px;
+        margin-top: 1px;
+        color: white;
+        font-size: 15px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    .about a {
+        display: -ms-grid;
+        display: grid;
+        color: #3ba4ff;
+        text-decoration: none;
+        font-size: 15px;
+    }
+    
+    @media (max-width: 1200px) {
+        .send {
+            display: -ms-grid;
+            display: grid;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            max-width: 500px;
+            right: 0px;
+            z-index: 10;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .wrapper {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: 100%;
+            grid-template-columns: 100%;
+            width: 100%;
+            height: 100vh;
+            background-color: white;
+            font-family: 'Black Ops One', cursive;
+            overflow-x: hidden;
+        }
+        .header {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: 1fr;
+            grid-template-columns: 1fr;
+            -ms-grid-rows: 1fr 6fr;
+            grid-template-rows: 1fr 6fr;
+            width: 100%;
+            height: 70vh;
+        }
+        .container {
+            display: -ms-grid;
+            display: grid;
+            padding: 0px 4px;
+        }
+        .container .left {
+            display: -ms-grid;
+            display: grid;
+            -webkit-box-pack: right;
+            -ms-flex-pack: right;
+            justify-content: right;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            background-color: white;
+            position: relative;
+        }
+        .container .left .title {
+            position: absolute;
+            bottom: 0;
+            left: 40px;
+            color: black;
+            font-size: 30px;
+            margin-top: 100px;
+        }
+        .container {
+            display: -ms-grid;
+            display: grid;
+            padding: 0px 4px;
+        }
+        .container .right {
+            -webkit-box-pack: right;
+            -ms-flex-pack: right;
+            justify-content: right;
+            background-color: white;
+            background-color: black;
+            position: relative;
+        }
+        .container .right .title {
+            position: absolute;
+            left: 40px;
+            color: white;
+            font-size: 30px;
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+        .about {
+            display: inline-block;
+            margin-top: 34px;
+            margin-left: 40px;
+            color: white;
+            font-size: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .about a {
+            color: #3ba4ff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .section {
+            display: -ms-grid;
+            display: grid;
+            border-top: 1px dashed white;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .feed {
+            display: none;
+        }
+        .on {
+            display: none;
+        }
+        .table {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: 1fr 2fr;
+            grid-template-columns: 1fr 2fr;
+            -ms-grid-rows: (5)[1fr];
+            grid-template-rows: repeat(1fr, 5);
+            width: 350px;
+            margin-left: calc(50% - 175px);
+            height: 130px;
+            margin-top: 10px;
+            border: 1px dashed rgba(59, 163, 255, 0.413);
+        }
+        .table:last-of-type {
+            margin-bottom: 10px;
+        }
+    }
 </style>
 
 <body>
-    <div class="left">
-        <div class="title">Welcome. </div>
-        <div class="send">
-            <form action="https://jul1u5.herokuapp.com/notes" method="POST">
-                <div>
-                    <label for="say">What is title here?</label>
-                    <input name="title" id="title" value="Hi">
-                </div>
-                <div>
-                    <label for="to">Name is?</label>
-                    <input name="content" id="content" value="Mom">
-                </div>
-                <div>
-                    <label for="to">How about about?</label>
-                    <input name="about" id="about" value="About">
-                </div>
-                <button>Push</button>
-            </form>
-        </div>
-    </div>
-    <div class="right">
-        <div class="title">
-            A REST API
-        </div>
-        <div class="about">
-            <a href="https://jul1u5.herokuapp.com/notes">https://jul1u5.herokuapp.com/notes</a>
-        </div>
-        <div class="feed">
-
-            <div class="on">
-                <div class="animation__cross">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="left">
+                    <div class="title">Welcome. </div>
+                    <div class="send">
+                        <form action="https://jul1u5.herokuapp.com/notes" method="POST">
+                            <div>
+                                <label for="say">What is title here?</label>
+                                <input name="title" id="title" value="Hi">
+                            </div>
+                            <div>
+                                <label for="to">Name is?</label>
+                                <input name="content" id="content" value="Mom">
+                            </div>
+                            <div>
+                                <label for="to">How about about?</label>
+                                <input name="about" id="about" value="About">
+                            </div>
+                            <button>Push</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="container">
+                <div class="right">
+                    <div class="title">
+                        A REST API
+                    </div>
+                    <div class="about">
+                        <a href="https://jul1u5.herokuapp.com/notes">https://jul1u5.herokuapp.com/notes</a>
+                    </div>
+                    <div class="feed">
+
+                        <div class="on">
+                            <div class="animation__cross">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="section">
+            <div class="container">
+                <div class="main">
+
+                </div>
+            </div>
+        </section>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
