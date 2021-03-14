@@ -101,8 +101,7 @@ section.insertAdjacentHTML('afterbegin', HTML);
 const fetchUsers = () => {
     axios.get('https://jul1u5.herokuapp.com/notes')
         .then(response => {
-            const users = response.data.data;
-            console.log(`GET list users`, users);
+            console.log(response);
         })
         .catch(error => console.error(error));
 };
