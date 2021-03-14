@@ -24,89 +24,126 @@ arrow.addEventListener('click', () => {
 
 // Data
 
-let HTML = `<div class="table">
-                <div class="name">
-                    <img src="./style/img/user.svg" alt="avatar">
-                    <span>Julius</span>
-                </div>
-                <div class="all">
-                    <div class="row">Resp api</div>
-                    <div class="row">
-                        <li>Let see how its works</li>
-                    </div>
-                    <div class="row">2021.10.12</div>
+// let HTML = `<div class="table">
+//                 <div class="name">
+//                     <img src="./style/img/user.svg" alt="avatar">
+//                     <span>Julius</span>
+//                 </div>
+//                 <div class="all">
+//                     <div class="row">Resp api</div>
+//                     <div class="row">
+//                         <li>Let see how its works</li>
+//                     </div>
+//                     <div class="row">2021.10.12</div>
 
-                </div>
-            </div>
-            <div class="table">
-                <div class="name">
-                    <img src="./style/img/user.svg" alt="avatar">
-                    <span>Julius</span>
-                </div>
-                <div class="all">
-                    <div class="row">Resp api</div>
-                    <div class="row">
-                        <li>Let see how its works</li>
-                    </div>
-                    <div class="row">2021.10.12</div>
+//                 </div>
+//             </div>
+//             <div class="table">
+//                 <div class="name">
+//                     <img src="./style/img/user.svg" alt="avatar">
+//                     <span>Julius</span>
+//                 </div>
+//                 <div class="all">
+//                     <div class="row">Resp api</div>
+//                     <div class="row">
+//                         <li>Let see how its works</li>
+//                     </div>
+//                     <div class="row">2021.10.12</div>
 
-                </div>
-            </div>
-            <div class="table">
-                <div class="name">
-                    <img src="./style/img/user.svg" alt="avatar">
-                    <span>Julius</span>
-                </div>
-                <div class="all">
-                    <div class="row">Resp api</div>
-                    <div class="row">
-                        <li>Let see how its works</li>
-                    </div>
-                    <div class="row">2021.10.12</div>
+//                 </div>
+//             </div>
+//             <div class="table">
+//                 <div class="name">
+//                     <img src="./style/img/user.svg" alt="avatar">
+//                     <span>Julius</span>
+//                 </div>
+//                 <div class="all">
+//                     <div class="row">Resp api</div>
+//                     <div class="row">
+//                         <li>Let see how its works</li>
+//                     </div>
+//                     <div class="row">2021.10.12</div>
 
-                </div>
-            </div>
-            <div class="table">
-                <div class="name">
-                    <img src="./style/img/user.svg" alt="avatar">
-                    <span>Julius</span>
-                </div>
-                <div class="all">
-                    <div class="row">Resp api</div>
-                    <div class="row">
-                        <li>Let see how its works</li>
-                    </div>
-                    <div class="row">2021.10.12</div>
+//                 </div>
+//             </div>
+//             <div class="table">
+//                 <div class="name">
+//                     <img src="./style/img/user.svg" alt="avatar">
+//                     <span>Julius</span>
+//                 </div>
+//                 <div class="all">
+//                     <div class="row">Resp api</div>
+//                     <div class="row">
+//                         <li>Let see how its works</li>
+//                     </div>
+//                     <div class="row">2021.10.12</div>
 
-                </div>
-            </div>
-            <div class="table">
-                <div class="name">
-                    <img src="./style/img/user.svg" alt="avatar">
-                    <span>Julius</span>
-                </div>
-                <div class="all">
-                    <div class="row">Resp api</div>
-                    <div class="row">
-                        <li>Let see how its works</li>
-                    </div>
-                    <div class="row">2021.10.12</div>
+//                 </div>
+//             </div>
+//             <div class="table">
+//                 <div class="name">
+//                     <img src="./style/img/user.svg" alt="avatar">
+//                     <span>Julius</span>
+//                 </div>
+//                 <div class="all">
+//                     <div class="row">Resp api</div>
+//                     <div class="row">
+//                         <li>Let see how its works</li>
+//                     </div>
+//                     <div class="row">2021.10.12</div>
 
-                </div>
-            </div>`;
+//                 </div>
+//             </div>`;
 
-feed.insertAdjacentHTML('afterbegin', HTML);
-section.insertAdjacentHTML('afterbegin', HTML);
+let HTML = '';
 
-const fetchUsers = () => {
-    axios.get('https://jul1u5.herokuapp.com/notes')
-        .then(response => {
-            console.log(response);
-        })
-        .catch(error => console.error(error));
-};
+// feed.insertAdjacentHTML('afterbegin', HTML);
+// section.insertAdjacentHTML('afterbegin', HTML);
 
-fetchUsers();
+// const fetchUsers = () => {
+axios.get('https://jul1u5.herokuapp.com/notes')
+    .then(response => {
+
+        let datas = response.data.reverse();
+
+        // console.log(datas[i]);
+        for (let i = 0; i < 5; i++) {
+
+            HTML += `<div class="table">
+                            <div class="name">
+                                <img src="./style/img/user.svg" alt="avatar">
+                                <span>${datas[i].content}</span>
+                            </div>
+                            <div class="all">
+                                <div class="row">${datas[i].title}</div>
+                                <div class="row">
+                                    <li>${datas[i].about}</li>
+                                </div>
+                                <div class="row">${datas[i].createdAt}</div>
+
+                            </div>
+                        </div>`;
+
+        }
+
+        feed.insertAdjacentHTML('afterbegin', HTML);
+        section.insertAdjacentHTML('afterbegin', HTML);
+
+        // console.log(datas.lenght);
+        // HTML = datas.about
+
+
+
+
+    })
+    .catch(error => console.error(error));
+// };
+
+// fetchUsers();
+
+
+
+
 
 
 
