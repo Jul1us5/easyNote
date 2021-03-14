@@ -5,8 +5,13 @@ const app = express();
 require("dotenv").config();
 const noteRoute = require('./app/routes/note.routes');
 let path = require('path');
+cors = require("cors");
+app.use(cors());
+
+
 
 const PORT = process.env.PORT || 3000;
+// Add Access Control Allow Origin headers
 
 //middlewares
 app.use(express.json());
@@ -38,6 +43,7 @@ require('./app/routes/note.routes')(app);
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
+
 
 
 mongoose.connect(process.env.MONGO_URL, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
