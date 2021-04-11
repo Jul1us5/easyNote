@@ -22,12 +22,12 @@
         display: grid;
         width: 100%;
         height: 100vh;
-        background-color: black;
+        background-color: white;
         font-family: 'Black Ops One', cursive;
         background: linear-gradient(-45deg, #ffffff, #59d0ff, #e8e8e8, #91dcff);
         background-size: 400% 400%;
-        -webkit-animation: gradient 15s ease infinite;
-        animation: gradient 15s ease infinite;
+        -webkit-animation: gradient 8s ease infinite;
+        animation: gradient 8s ease infinite;
     }
     
     @-webkit-keyframes gradient {
@@ -69,10 +69,15 @@
         height: 300px;
     }
     
+    .footer {
+        display: none;
+    }
+    
     .main {
         display: -ms-grid;
         display: grid;
         width: 100%;
+        margin-top: 30px;
         background-color: white;
     }
     
@@ -134,7 +139,7 @@
         grid-template-rows: repeat(1fr, 5);
         width: 350px;
         height: 130px;
-        border: 1px dashed rgba(59, 163, 255, 0.413);
+        border: 1px dashed black;
     }
     
     .table .name {
@@ -190,7 +195,7 @@
         display: grid;
         width: 400px;
         height: 100vh;
-        background-color: white;
+        background-color: #59d0ff;
         -webkit-transition: 1s;
         transition: 1s;
         -webkit-box-pack: center;
@@ -214,7 +219,7 @@
         cursor: pointer;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: white;
+        background-color: #59d0ff;
         border-radius: 10px 0px 0px 10px;
         -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -365,7 +370,7 @@
         height: 20px;
         border: none;
         border-radius: 4px;
-        background-color: #0077ff;
+        background-color: #59d0ff;
         cursor: pointer;
     }
     
@@ -381,7 +386,7 @@
     .about a {
         display: -ms-grid;
         display: grid;
-        color: #3ba4ff;
+        color: #59d0ff;
         text-decoration: none;
         font-size: 15px;
     }
@@ -406,10 +411,17 @@
             -ms-grid-columns: 100%;
             grid-template-columns: 100%;
             width: 100%;
-            height: 100vh;
             background-color: white;
             font-family: 'Black Ops One', cursive;
             overflow-x: hidden;
+        }
+        .footer {
+            display: -ms-grid;
+            display: grid;
+            width: 100%;
+            height: 70px;
+            background-color: black;
+            font-family: 'Black Ops One', cursive;
         }
         .header {
             display: -ms-grid;
@@ -419,7 +431,6 @@
             -ms-grid-rows: 1fr 6fr;
             grid-template-rows: 1fr 6fr;
             width: 100%;
-            height: 70vh;
         }
         .container {
             display: -ms-grid;
@@ -475,7 +486,7 @@
             font-family: 'Montserrat', sans-serif;
         }
         .about a {
-            color: #3ba4ff;
+            color: #59d0ff;
             text-decoration: none;
             font-size: 15px;
         }
@@ -506,6 +517,31 @@
         }
         .table:last-of-type {
             margin-bottom: 10px;
+        }
+        .copy {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-row-align: center;
+            align-self: center;
+            -ms-grid-columns: 1fr .1fr 1fr;
+            grid-template-columns: 1fr .1fr 1fr;
+            color: white;
+        }
+        .copy a:first-of-type {
+            text-align: right;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .copy span {
+            text-align: center;
+            color: white;
+        }
+        .copy a:last-of-type {
+            text-align: left;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
         }
     }
 </style>
@@ -561,6 +597,13 @@
                 <div class="main">
 
                 </div>
+                <footer class="footer">
+                    <div class="container">
+                        <div class="copy">
+                            <a href="http://jul1u5.lt">Jul1u5.lt</a> <span>&</span> <a href="https://github.com/Jul1us5">Github</a>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </section>
     </div>
